@@ -23,7 +23,7 @@ void main() => runApp(
 class MyApp extends StatelessWidget {
   Route _getRoute(RouteSettings settings) {
     switch (settings.name) {
-      case "/":
+      case  "/":
         return FadeRoute(page: Homes());
 
       case '/pokedex':

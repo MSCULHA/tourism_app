@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:rxdart/rxdart.dart';
 import 'package:tourism_app/model/movie.dart';
 import 'package:tourism_app/popular_movies_main_page.dart';
@@ -448,31 +449,50 @@ class _SuggestionItemMainPageState extends State<SuggestionItemMainPage> {
               builder: (context) => MyAppsa(),
             ));
       },
-      child: Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 190,
-              width: 380  ,
-              decoration: BoxDecoration(
-                borderRadius: new BorderRadius.all(Radius.circular(25)),
-                image: DecorationImage(
-                  image: NetworkImage(widget.contentDetails.contentImage),
-                  fit: BoxFit.fitHeight,
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Container(
+          decoration: BoxDecoration(
+
+            border: Border.all(color: Colors.blueAccent),
+            color: Colors.white70,
+              borderRadius: new BorderRadius.only(
+                  topLeft:  const  Radius.circular(30.0),
+                  topRight: const  Radius.circular(30.0),
+                  bottomRight: const Radius.circular(30.0),
+                  bottomLeft: const Radius.circular(30.0)
+              )
+          
+          ),
+          child: Row(
+            children: <Widget>[
+              Container(
+                height: 190,
+                width: 200  ,
+                decoration: BoxDecoration(
+                  borderRadius: new BorderRadius.all(Radius.circular(100)),
+                  image: DecorationImage(
+                    image: NetworkImage(widget.contentDetails.contentImage),
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
+
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Center(
+                  child: Text(widget.contentDetails.contentName + ' ',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 23)),
                 ),
               ),
-              child: Center(
-                child: Text(widget.contentDetails.contentName + ' ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 25)),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-            )
-          ],
+              Padding(
+                padding: EdgeInsets.all(10),
+              )
+            ],
+          ),
         ),
       ),
     );

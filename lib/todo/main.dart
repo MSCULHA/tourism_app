@@ -1,16 +1,7 @@
-/*
- * MIT Licence
- * Copyright 2017 @CodesBay (www.CodesBay.com)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the "Software"), to deal in the
- * Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and / or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so, subject to the following conditions :
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
- * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
- * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+library circular_check_box;
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,6 +19,13 @@ import '../data.dart';
 import '../test.dart';
 import '../testData.dart';
 List<bool> theCheckboxState = <bool>[false] ;
+List<bool> Sighseeing = <bool>[false];
+List<bool> LocalDished = <bool>[false];
+List<bool> Cultural = <bool>[false];
+List<bool> Social = <bool>[false] ;
+
+
+
 List<bool> deneme = <bool>[false] ;
 
 void main() {
@@ -77,8 +75,8 @@ class HomePageWithState extends State<HomePage> {
   Future getPosts() async {
 
     QuerySnapshot qn = TipServices().getCategories(oneData, twoData);
-
     return qn.documents;
+
   }
 
 
@@ -111,32 +109,21 @@ class HomePageWithState extends State<HomePage> {
 
                           debugPrint('TIKLANDI');
 
-
-
-                          //  debugPrint(theCheckboxState[index].toString());
-
-
-                          if(theToDoList[index] == 'Listen Music'){
-
-                            debugPrint('DOĞRU DEĞER');
-                          }else{
-
-                            debugPrint('YANLIŞ DEĞER');
-                          }
-
                           treeData = theToDoList[index];
 
+
                           debugPrint(treeData);
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MyAppsa(),
+                                builder: (context) => PokemonInfo(),
                               ));
                         },
                         child: Container(
                           decoration: new BoxDecoration(
                               color:
-                              theCheckboxState[index] == true ? Colors.red : Colors.blueAccent, //new Color.fromRGBO(255, 0, 0, 0.0),
+                              theCheckboxState[index] == true  ? Colors.red : Colors.blueAccent, //new Color.fromRGBO(255, 0, 0, 0.0),
                               borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(40.0),
                                   topRight: const Radius.circular(40.0),
@@ -159,8 +146,7 @@ class HomePageWithState extends State<HomePage> {
                                       fontWeight: FontWeight.bold,
                                       decoration: TextDecoration.lineThrough,
                                     ),
-                                  )
-                                      : Text(
+                                  )  : Text(
                                     theToDoList[index],
                                     style: TextStyle(
                                       color: Colors.black,
@@ -220,6 +206,7 @@ class HomePageWithState extends State<HomePage> {
             setState(() {
               print("Current INDEX Is => $index");
               theCheckboxState[index] = value;
+
             });
           }));
     } else {
@@ -228,7 +215,9 @@ class HomePageWithState extends State<HomePage> {
           onChanged: (bool value) {
             setState(() {
               print("Current INDEX Is => $index");
-              theCheckboxState[index] = value;
+              theCheckboxState[index] = value;///  the checkboxstate i değiştirme. burada farklı listeler koy eğer sighseeing is sightseeing listesini setle.
+
+             
             });
           });
     }

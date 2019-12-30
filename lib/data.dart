@@ -25,6 +25,10 @@ List<String> theImageLista = [
 ];
 
 List<String> sight = [];
+bool data1= false;
+bool data2= false;
+bool data3=false;
+bool data4=false;
 
 List<String> cultures = [];
 
@@ -86,11 +90,11 @@ String twoData;
 List<String> twoDatas;
 
 String treeData;
+bool testdata;
 int degiskentak = 0;
 
 var userDocument;
 List<IAPItem> iaps = [];
-
 List<String> favorites;
 
 String selectedCategory;

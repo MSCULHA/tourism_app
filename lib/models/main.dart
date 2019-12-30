@@ -111,21 +111,14 @@ class HomePageWithState extends State<HomePages> {
 
 
                         if(theToDoLista[index] == "Sightseeing"){
-
-
                           for (var i = 0; i < sight.length; i++) {
                             theToDoList.add(
                               sight[i],
                             );
                             itemler.add(i);
                           }
-
-                          debugPrint(' SİGHTSEEİNG TRUE DÖNDÜ');
-
-
+                          data1 = true;
                         }
-
-
 
                         if(theToDoLista[index] == "Local Dished"){
                           for (var i = 0; i < localDished.length; i++) {
@@ -134,12 +127,10 @@ class HomePageWithState extends State<HomePages> {
                             );
                             itemler.add(i);
                           }
-
-                          debugPrint(' LOCAL DİSHED TRUE DÖNDÜ');
-                          debugPrint(prefix0.localDished.length.toString());
+                          data2 = true;
                         }
-                        if(theToDoLista[index] == "Cultural Activities"){
 
+                        if(theToDoLista[index] == "Cultural Activities"){
                           for (var i = 0; i < prefix0.culture.length; i++) {
                             theToDoList.add(
                               prefix0.culture[i],
@@ -147,18 +138,17 @@ class HomePageWithState extends State<HomePages> {
                             itemler.add(i);
                           }
 
+                          data3 = true;
                         }
 
                         if(theToDoLista[index] == "Social Areas"){
-
                           for (var i = 0; i < prefix0.cultures.length; i++) {
                             theToDoList.add(
                               prefix0.cultures[i],
                             );
                             itemler.add(i);
                           }
-
-
+                          data4 = true;
                         }
 
                         culture = [];
@@ -172,22 +162,38 @@ class HomePageWithState extends State<HomePages> {
                               builder: (context) => MyApps(),
                             ));
                       },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.indigo,
+                      child: Stack(
+                        children:<Widget>[
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 168),
+                                child:Text(
+                                  theToDoLista[index] + '' , style: TextStyle(fontSize: 18,color: Colors.blue,fontWeight: FontWeight.w900), textAlign: TextAlign.center,
+
+                            ),
+                          ),
+
+
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Container(
+                      decoration: BoxDecoration(
+                            color: Colors.indigo,
 
                             image: new DecorationImage(image: AssetImage(theImageLista[index]),
                               fit: BoxFit.fill,),
-                          borderRadius: BorderRadius.all(Radius.circular(30))
-
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                            theToDoLista[index] + '' , style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.w900), textAlign: TextAlign.center,
-                        ),
+                            borderRadius: BorderRadius.all(Radius.circular(100))
 
                       ),
-                    ),
+                      ),
+                          ),
+
+
+                        ],
+                          alignment: Alignment.center,
+
+                        ),
+                      ),
                   );
 
 
